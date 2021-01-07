@@ -17,11 +17,11 @@ To clone your forks to a new machine:
 1. On the machine to which you want to clone your forks, [generate an SSH key](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key).
 2. [Add the key you generated to your GitHub account](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
 3. Clone this repository.
-4. Navigate to the `clone-mdb-docs` directory.
+4. Navigate to the directory into which you wish to clone your forks.
 5. Run the `clone-mdb-docs-repos.py` script. Pass your GitHub username as an argument:
 
    ```
-   python3 clone-mdb-docs-repos.py jwilliams-mongo
+   python3 path/to/clone-mdb-docs-reop/clone-mdb-docs-repos.py jwilliams-mongo
    ```
    
  When the script completes, it returns a list of repositories that it did not clone because:
