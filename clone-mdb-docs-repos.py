@@ -32,7 +32,8 @@ tengen_repo_list = [
     "docs-mongocli",
     "docs-datalake",
     "docs-kafka-connector",
-    "docs-realm-sdks"
+    "docs-realm-sdks",
+    "docs-tutorials"
 ]
 mongodb_repo_list = [
     "docs-assets",
@@ -47,7 +48,8 @@ mongodb_repo_list = [
     "mongodb-kubernetes-operator",
     "docs-realm",
     "docs-commandline-tools",
-    "docs-worker-pool"
+    "docs-worker-pool",
+    "docs-tools"
 ]
 def run(*args):
     return subprocess.check_call(list(args))
