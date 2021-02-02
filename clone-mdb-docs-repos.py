@@ -49,7 +49,8 @@ mongodb_repo_list = [
     "docs-realm",
     "docs-commandline-tools",
     "docs-worker-pool",
-    "docs-tools"
+    "docs-tools",
+    "docs-landing"
 ]
 def run(*args):
     return subprocess.check_call(list(args))
