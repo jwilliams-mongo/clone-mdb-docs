@@ -21,7 +21,7 @@ To clone your forks to a new machine:
 5. Run the `clone-mdb-docs-repos.py` script. Pass your GitHub username as an argument:
 
    ```
-   python3 path/to/clone-mdb-docs-reop/clone-mdb-docs-repos.py jwilliams-mongo
+   python3 path/to/clone-mdb-docs-repo/clone-mdb-docs-repos.py jwilliams-mongo
    ```
    
  When the script completes, it returns a list of repositories that it did not clone because:
