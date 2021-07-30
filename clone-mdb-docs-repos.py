@@ -37,7 +37,6 @@ tengen_repo_list = [
 ]
 mongodb_repo_list = [
     "docs-assets",
-    "docs-tools",
     "docs",
     "docs-ecosystem",
     "docs-primer",
