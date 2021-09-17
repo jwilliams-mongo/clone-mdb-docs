@@ -28,7 +28,6 @@ To clone your forks to a new machine:
    ```shell
    python3 path/to/clone-mdb-docs-repo/clone-mdb-docs-repos.py jwilliams-mongo /Users/jwilliams/projects/
    ```
-   **Note**: You must include the `/` at the end of the output directory for the script to work correctly.
    
  When the script completes, it returns a list of repositories that it did not clone because:
  

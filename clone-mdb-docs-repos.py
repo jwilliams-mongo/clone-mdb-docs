@@ -33,12 +33,14 @@ Example:
 python3 {sys.argv[0]} jwilliams-mongo /Users/jwilliams/projects/
 ################################################################################
 """)
-os.chdir(path_to_repos) # throws error if path doesn't exist
 
+if(not path_to_repos.endswith("/")):
+    path_to_repos += "/"
+os.chdir(path_to_repos) # throws error if path doesn't exist
 
 not_forked = []
 not_cloned = []
-
+cloned = []
 # lists of mdb docs repositories as of Nov 24 2020
 
 tengen_repo_list = [
@@ -73,17 +75,17 @@ def run(*args):
     return subprocess.check_call(list(args))
 
 def fetch_and_clone_repo(gh_org, repo):
-        os.chdir(path_to_repos)
-        os.getcwd()
-        print("######## cloning " + repo + " ...")
-        run("gh", "repo", "fork", "https://github.com/" +  gh_org + "/" + repo + ".git", "--clone=true")
-        os.chdir(path_to_repos + repo)
-        run("git", "fetch", "--all")
-        if repo == "docs-realm-sdks":
-            run("git", "branch", "-u", "upstream/latest")
-        else:
-            run("git", "branch", "-u", "upstream/master")
-        os.chdir(path_to_repos)
+    os.chdir(path_to_repos)
+    print("######## cloning " + repo + " ...") 
+    run("gh", "repo", "fork", "https://github.com/" +  gh_org + "/" + repo + ".git", "--clone=true")
+    os.chdir(path_to_repos + repo)
+    run("git", "fetch", "--all")
+    if repo == "docs-realm-sdks":
+        run("git", "branch", "-u", "upstream/latest")
+    else:
+        run("git", "branch", "-u", "upstream/master")
+    os.chdir(path_to_repos)
+    
 
 
 def fetch_and_clone_repos_by_org(gh_org, org_repo_list):
@@ -96,16 +98,17 @@ def fetch_and_clone_repos_by_org(gh_org, org_repo_list):
         except: 
             try:
                 fetch_and_clone_repo(gh_org, repo)
+                cloned.append(repo)
             except:
                 not_forked.append(repo)
-                # assumes reason for failure is that no fork exists.
-                print("######## cloning " + repo + " failed. Make sure that you've forked this repository.") 
+                print("######## cloning " + repo + " failed. Make sure You've correctly set up the Github CLI.") 
+                print("For info on setting up the Github CLI, see https://cli.github.com/manual/gh_auth_login")
 
 
-def print_error_repos(error_list, error_msg):
-    print(error_msg)
-    if len(error_list) > 0:
-        for repo in error_list:
+def print_repos_list(repo_list, msg):
+    print(msg)
+    if len(repo_list) > 0:
+        for repo in repo_list:
             print(repo)
         print("")
     else:
@@ -117,17 +120,21 @@ def clone_tengen():
 def clone_mongodb():
     fetch_and_clone_repos_by_org(mongodb, mongodb_repo_list)
 
-def print_not_forked():
-    print_error_repos(not_forked, "######## repos not cloned because you need to fork:")
-
 def print_not_cloned():
-    print_error_repos(not_cloned, "######## repos not cloned because they already exist:")
+    print_repos_list(not_cloned, "######## repos not cloned because they already exist")
 
+def print_errors():
+    print_repos_list(not_forked, "######## repos where errors were encountered. see output above for action to take on the specific repos ")
+
+def print_success():
+    print_repos_list(cloned, "######## repos successfully cloned to the machine")
 
 clone_tengen()
 
 clone_mongodb()
 
-print_not_forked()
-
 print_not_cloned()
+
+print_errors()
+
+print_success()
