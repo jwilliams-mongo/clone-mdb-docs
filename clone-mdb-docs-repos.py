@@ -70,7 +70,8 @@ mongodb_repo_list = [
     "docs-commandline-tools",
     "docs-worker-pool",
     "docs-tools",
-    "docs-landing"
+    "docs-landing",
+    "mongocli"
 ]
 def run(*args):
     return subprocess.check_call(list(args))
