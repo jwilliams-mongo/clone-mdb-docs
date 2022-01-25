@@ -53,7 +53,8 @@ tengen_repo_list = [
     "docs-datalake",
     "docs-kafka-connector",
     "docs-realm-sdks",
-    "docs-tutorials"
+    "docs-tutorials",
+    "docs-mongodb-internal"
 ]
 mongodb_repo_list = [
     "docs-assets",
