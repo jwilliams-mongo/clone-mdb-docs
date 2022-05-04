@@ -72,7 +72,8 @@ mongodb_repo_list = [
     "docs-tools",
     "docs-landing",
     "mongocli",
-    "docs-atlas-cli"
+    "docs-atlas-cli",
+    "docs-cluster-to-cluster-sync"
 ]
 def run(*args):
     return subprocess.check_call(list(args))
